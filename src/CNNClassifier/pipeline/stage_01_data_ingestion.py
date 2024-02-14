@@ -4,11 +4,13 @@ from CNNClassifier import logger
 
 logger.info(f"Data ingestion stage started")
 
-config=ConnectionAbortedError()
-data_ingestion_config=config.get_data_ingestion_config()
+config=ConfigurationManager()
 
-data_ingestion=DataIngestion(config=data_ingestion_config)
+# Below variable will capture data from config.yaml file and configuration.py inside entity
+data_ingestion_config=config.get_data_ingestion_config() 
 
+data_ingestion=DataIngestion(config=data_ingestion_config)  #This will start data ingeation 
+                                                            # Which inside components
 data_ingestion.download_file()
 
 data_ingestion.unzip_and_clean()
