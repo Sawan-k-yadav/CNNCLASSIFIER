@@ -12,8 +12,12 @@ from box.exceptions import BoxValueError
 from box import config_box
 
 @ensure_annotations
-def read_yaml():
-    pass
+def read_yaml(path_to_yaml:Path):
+    with open(path_to_yaml) as yaml_file:
+        content=yaml.safe_load(yaml_file)
+        return content
+
+
 
 @ensure_annotations
 def save_json():

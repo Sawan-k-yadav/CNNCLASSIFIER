@@ -6,8 +6,15 @@ import os
 
 
 class ConfigurationManager:
-    def __init__(self):
-        pass
+    def __init__(self,config_filepath = CONFIG_FILE_PATH, params_filepath = PARAMS_FILE_PATH):
+        
+        # Configuration of data ingestion
+        self.config = read_yaml(config_filepath)
+        self.params = read_yaml(params_filepath)
+        create_directory([self.config.artifacts_root])
+
+
 
     def get_data_ingestion_config(self):
-        pass
+        config=self.config.data_ingestion
+        create_directory([self.config.root_dir])
